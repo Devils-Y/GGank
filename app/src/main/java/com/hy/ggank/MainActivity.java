@@ -1,0 +1,240 @@
+package com.hy.ggank;
+
+import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+
+
+import com.hy.ggank.base.BaseActivity;
+import com.hy.ggank.data.DataTextFragment;
+import com.hy.ggank.program.ProgramFragment;
+import com.hy.ggank.utils.ToastUtils;
+import com.hy.ggank.welfare.WelfareDialogFragment;
+
+import butterknife.BindString;
+import butterknife.BindView;
+import butterknife.OnClick;
+
+import static com.hy.ggank.constants.Constants.TYPE;
+
+
+public class MainActivity extends BaseActivity {
+
+     @BindView(R.id.toolbar)
+     Toolbar toolbar;
+     @BindView(R.id.container)
+     FrameLayout container;
+     @BindView(R.id.radioGroup)
+     RadioGroup radioGroup;
+     @BindView(R.id.recommendRadio)
+     RadioButton recommendRadio;
+     @BindView(R.id.programRadio)
+     RadioButton programRadio;
+     @BindView(R.id.loveRadio)
+     Button loveRadio;
+     @BindView(R.id.videoRadio)
+     RadioButton videoRadio;
+     @BindView(R.id.expandRadio)
+     RadioButton expandRadio;
+     @BindView(R.id.bottomLayout)
+     RelativeLayout bottomLayout;
+
+     @OnClick(R.id.loveRadio)
+     void onClick(View view) {
+          switch (view.getId()) {
+               case R.id.loveRadio:
+                    if (isFastDoubleClick()) {
+                         ToastUtils.toast(clickTooFastTxt);
+                         return;
+                    }
+                    welfareDialog = new WelfareDialogFragment();
+                    welfareDialog.show(getSupportFragmentManager(), "");
+                    break;
+          }
+     }
+
+     @BindString(R.string.recommend_txt)
+     String recommendTxt;
+     @BindString(R.string.random_recommend_txt)
+     String randomRecommendTxt;
+     @BindString(R.string.program_txt)
+     String programTxt;
+     @BindString(R.string.video_txt)
+     String videoTxt;
+     @BindString(R.string.rest_video_txt)
+     String restVideoTxt;
+     @BindString(R.string.expand_txt)
+     String resourcesTxt;
+     @BindString(R.string.expand_resources_txt)
+     String expandResourcesTxt;
+     @BindString(R.string.click_too_fast_txt)
+     String clickTooFastTxt;
+
+     Bundle bundle;
+
+     private String requestData;
+
+     DataTextFragment dataRecommendFragment;
+     DataTextFragment dataVideoFragment;
+     DataTextFragment dataExpandFragment;
+     ProgramFragment programFragment;
+
+     FragmentTransaction transaction;
+
+     WelfareDialogFragment welfareDialog;
+
+     @Override
+     public int getLayoutID() {
+          return R.layout.activity_main;
+     }
+
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+          super.onCreate(savedInstanceState);
+          initView();
+     }
+
+     @Override
+     public void initTitle() {
+          toolbar.setTitle(recommendTxt);
+          setSupportActionBar(toolbar);
+          setImmerseLayout(toolbar);
+     }
+
+     private void initView() {
+
+          bundle = new Bundle();
+          requestData = randomRecommendTxt;
+          transaction = getSupportFragmentManager().beginTransaction();
+          hideFragments(transaction);
+          checkRecommendFragment();
+          recommendRadio.setChecked(true);
+
+          radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+               public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    transaction = getSupportFragmentManager().beginTransaction();
+                    hideFragments(transaction);
+                    switch (checkedId) {
+                         case R.id.recommendRadio:
+                              requestData = randomRecommendTxt;
+                              toolbar.setTitle(recommendTxt);
+                              checkRecommendFragment();
+                              recommendRadio.setChecked(true);
+                              break;
+                         case R.id.programRadio:
+                              requestData = programTxt;
+                              toolbar.setTitle(programTxt);
+                              checkProgramFragment();
+                              programRadio.setChecked(true);
+                              break;
+                         case R.id.videoRadio:
+                              requestData = restVideoTxt;
+                              toolbar.setTitle(videoTxt);
+                              checkVideoFragment();
+                              videoRadio.setChecked(true);
+                              break;
+                         case R.id.expandRadio:
+                              requestData = expandResourcesTxt;
+                              toolbar.setTitle(resourcesTxt);
+                              checkExpandFragment();
+                              expandRadio.setChecked(true);
+                              break;
+                         default:
+                              break;
+                    }
+               }
+          });
+     }
+
+     private void hideFragments(FragmentTransaction fragmentTransaction) {
+          if (dataRecommendFragment != null) {
+               fragmentTransaction.hide(dataRecommendFragment);
+          }
+          if (dataVideoFragment != null) {
+               fragmentTransaction.hide(dataVideoFragment);
+          }
+          if (dataExpandFragment != null) {
+               fragmentTransaction.hide(dataExpandFragment);
+          }
+          if (programFragment != null) {
+               fragmentTransaction.hide(programFragment);
+          }
+     }
+
+
+     private void checkRecommendFragment() {
+          bundle.putString(TYPE, requestData);
+          if (dataRecommendFragment == null) {
+               dataRecommendFragment = new DataTextFragment();
+               transaction.add(R.id.container, dataRecommendFragment);
+          } else {
+               transaction.show(dataRecommendFragment);
+          }
+          dataRecommendFragment.setArguments(bundle);
+          transaction.commit();
+//          transaction.commitAllowingStateLoss();
+     }
+
+     private void checkVideoFragment() {
+          bundle.putString(TYPE, requestData);
+          if (dataVideoFragment == null) {
+               dataVideoFragment = new DataTextFragment();
+               transaction.add(R.id.container, dataVideoFragment);
+          } else {
+               transaction.show(dataVideoFragment);
+          }
+          dataVideoFragment.setArguments(bundle);
+          transaction.commit();
+     }
+
+
+     private void checkExpandFragment() {
+          bundle.putString(TYPE, requestData);
+          if (dataExpandFragment == null) {
+               dataExpandFragment = new DataTextFragment();
+               transaction.add(R.id.container, dataExpandFragment);
+          } else {
+               transaction.show(dataExpandFragment);
+          }
+          dataExpandFragment.setArguments(bundle);
+          transaction.commit();
+     }
+
+     public void checkProgramFragment() {
+          if (programFragment == null) {
+               programFragment = new ProgramFragment();
+               transaction.add(R.id.container, programFragment);
+          } else {
+               transaction.show(programFragment);
+          }
+          transaction.commit();
+     }
+
+//     //TODO search功能
+//     @Override
+//     public boolean onCreateOptionsMenu(Menu menu) {
+//          getMenuInflater().inflate(R.menu.main_data_search_menu, menu);
+//          return true;
+//     }
+//
+//     /**
+//      * menu菜单点击操作的监听事件
+//      */
+//     @Override
+//     public boolean onOptionsItemSelected(MenuItem item) {
+//          switch (item.getItemId()) {
+//               case R.id.search:
+//
+//                    break;
+//          }
+//          return super.onOptionsItemSelected(item);
+//     }
+}

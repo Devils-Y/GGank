@@ -1,0 +1,21 @@
+<resources>
+     <string name="app_name">GGank</string>
+     <string name="random_recommend_txt">瞎推荐</string>
+     <string name="app_txt">App</string>
+     <string name="ios_txt">iOS</string>
+     <string name="frontend_txt">前端</string>
+     <string name="welfare_txt">福利</string>
+     <string name="android_txt">Android</string>
+     <string name="rest_video_txt">休息视频</string>
+     <string name="expand_resources_txt">拓展资源</string>
+     <string name="recommend_txt">推荐</string>
+     <string name="program_txt">程序</string>
+     <string name="video_txt">视频</string>
+     <string name="expand_txt">拓展</string>
+     <string name="click_too_fast_txt">点击得太快了!!!请让宝宝休息一下吧</string>
+     <string name="loading_txt">使劲儿加载中...</string>
+     <string name="image_content_txt">图片详情</string>
+     <string name="where_welfare_go_txt">福利去哪了？</string>
+     <string name="more_welfare_txt">更多福利</string>
+     <string name="search_txt">搜索</string>
+</resources>

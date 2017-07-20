@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+     <style name="NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+          <item name="android:windowIsTranslucent">true</item>／／变透明
+          <item name="android:windowBackground">@android:color/transparent</item>／／背景颜色为透明
+          <item name="windowActionBar">false</item>／／去掉ActionBar
+          <item name="android:windowNoTitle">true</item>／／去掉标题
+          <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+     </style>
+
+     <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+          <item name="tabIndicatorColor">@color/skyblue</item>
+          <item name="tabSelectedTextColor">@color/skyblue</item>
+          <item name="textAllCaps">true</item>
+     </style>
+
+     <style name="MyCustomTextAppearance" parent="TextAppearance.Design.Tab">
+          <item name="textAllCaps">false</item>
+          <item name="android:textAllCaps">false</item>
+     </style>
+
+     <style name="CustomProgressStyle">
+          <item name="android:indeterminateDrawable">@drawable/progressbar</item>
+     </style>
+</resources>
