@@ -16,7 +16,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
      //布局id
      private int mLayoutId;
 
-     private List<T> mData;
+     protected List<T> mData;
 
      protected LayoutInflater mLayoutInflater;
 

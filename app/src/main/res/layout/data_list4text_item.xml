@@ -3,7 +3,7 @@
      xmlns:android="http://schemas.android.com/apk/res/android"
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
-     android:background="@color/white">
+     android:background="@drawable/item_selector">
 
      <RelativeLayout
           android:layout_width="match_parent"
@@ -12,7 +12,7 @@
           android:layout_gravity="center_vertical"
           android:layout_marginLeft="10dp"
           android:layout_marginRight="10dp"
-          android:layout_toLeftOf="@+id/img"
+          android:layout_toLeftOf="@+id/imgLayout"
           android:gravity="center_vertical">
 
           <TextView
@@ -41,13 +41,33 @@
 
      </RelativeLayout>
 
-     <ImageView
-          android:id="@+id/img"
+     <RelativeLayout
+          android:id="@+id/imgLayout"
           android:layout_width="80dp"
           android:layout_height="60dp"
-          android:transitionName="small_image"
           android:layout_alignParentRight="true"
           android:layout_centerVertical="true"
-          android:layout_marginRight="10dp"
-          android:scaleType="centerCrop"/>
+          android:layout_marginRight="10dp">
+
+          <ImageView
+               android:id="@+id/img"
+               android:layout_width="80dp"
+               android:layout_height="60dp"
+               android:scaleType="centerCrop"/>
+
+          <RelativeLayout
+               android:id="@+id/gifLayout"
+               android:layout_width="match_parent"
+               android:layout_centerInParent="true"
+               android:gravity="center"
+               android:visibility="gone"
+               android:background="@color/half_white_trans"
+               android:layout_height="wrap_content">
+
+               <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_gif_black_24dp"/>
+          </RelativeLayout>
+     </RelativeLayout>
 </RelativeLayout>

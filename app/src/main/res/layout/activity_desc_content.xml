@@ -3,6 +3,7 @@
      xmlns:android="http://schemas.android.com/apk/res/android"
      android:layout_width="match_parent"
      android:layout_height="match_parent"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
      android:background="@color/white">
 
      <android.support.design.widget.AppBarLayout
@@ -22,6 +23,16 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:layout_below="@+id/appBarLayout"/>
+
+     <android.support.design.widget.FloatingActionButton
+          android:id="@+id/collection"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentRight="true"
+          app:backgroundTint="@color/colorPrimary"
+          android:layout_margin="@dimen/action_button_margin"
+          android:src="@drawable/ic_star_border_white_24dp"/>
 
      <ProgressBar
           android:id="@+id/progressBar"

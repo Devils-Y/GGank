@@ -111,7 +111,7 @@
                     android:drawableTop="@mipmap/suitcase_24px"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="@string/expand_txt"
+                    android:text="@string/about_txt"
                     android:textColor="@drawable/tab_txt_color_selector"
                     android:textSize="13sp"/>
           </RadioGroup>

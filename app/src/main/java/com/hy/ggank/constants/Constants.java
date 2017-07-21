@@ -38,8 +38,7 @@ public class Constants {
       */
      public static final String IMAGE_OTHER = "other";
      /**
-      * 广播
-      * about:关闭前一页的福利dialog
+      * 收藏的广播
       */
-     public static final String CLOSE_WELFARE = "close_welfare";
+     public static final String COLLECTION_CHANGE = "android.intent.action.collectionChange";
 }

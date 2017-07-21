@@ -2,7 +2,7 @@ package com.hy.ggank.network;
 
 
 
-import com.hy.ggank.data.DataResult;
+import com.hy.ggank.ui.data.DataResult;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;

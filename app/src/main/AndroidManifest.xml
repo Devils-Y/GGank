@@ -9,7 +9,7 @@
           android:allowBackup="true"
           android:icon="@mipmap/ggank_icon"
           android:label="@string/app_name"
-          android:roundIcon="@mipmap/ic_launcher_round"
+          android:roundIcon="@mipmap/ggank_icon"
           android:supportsRtl="true"
           android:theme="@style/NoActionBarTheme">
           <activity android:name=".MainActivity">
@@ -20,17 +20,21 @@
                </intent-filter>
           </activity>
           <!-- 内容详情 -->
-          <activity android:name=".content.DescContentActivity"/>
+          <activity
+               android:name=".ui.content.DescContentActivity"
+               android:launchMode="singleTask"/>
           <!-- 图片详情 -->
           <activity
-               android:name=".content.ImageContentActivity"
+               android:name=".ui.content.ImageContentActivity"
                android:launchMode="singleTask"/>
           <!-- 更多福利 -->
           <activity
-               android:name=".welfare.WelfareActivity"
+               android:name=".ui.welfare.WelfareActivity"
                android:launchMode="singleTask"/>
+          <!-- 收藏 -->
+          <activity android:name=".ui.collection.CollectionActivity"/>
           <!-- 搜索 -->
-          <activity android:name=".search.SearchActivity"/>
+          <activity android:name=".ui.search.SearchActivity"/>
      </application>
 
 </manifest>

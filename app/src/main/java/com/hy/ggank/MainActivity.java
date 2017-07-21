@@ -12,12 +12,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
-
+import com.hy.ggank.ui.about.AboutFragment;
 import com.hy.ggank.base.BaseActivity;
-import com.hy.ggank.data.DataTextFragment;
-import com.hy.ggank.program.ProgramFragment;
+import com.hy.ggank.ui.collection.CollectionActivity;
+import com.hy.ggank.ui.data.DataTextFragment;
+import com.hy.ggank.ui.program.ProgramFragment;
 import com.hy.ggank.utils.ToastUtils;
-import com.hy.ggank.welfare.WelfareDialogFragment;
+import com.hy.ggank.ui.welfare.WelfareDialogFragment;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -55,6 +56,10 @@ public class MainActivity extends BaseActivity {
                          ToastUtils.toast(clickTooFastTxt);
                          return;
                     }
+                    if(welfareDialog!=null){
+                         welfareDialog.dismiss();
+                         welfareDialog = null;
+                    }
                     welfareDialog = new WelfareDialogFragment();
                     welfareDialog.show(getSupportFragmentManager(), "");
                     break;
@@ -71,8 +76,8 @@ public class MainActivity extends BaseActivity {
      String videoTxt;
      @BindString(R.string.rest_video_txt)
      String restVideoTxt;
-     @BindString(R.string.expand_txt)
-     String resourcesTxt;
+     @BindString(R.string.about_txt)
+     String aboutTxt;
      @BindString(R.string.expand_resources_txt)
      String expandResourcesTxt;
      @BindString(R.string.click_too_fast_txt)
@@ -84,7 +89,7 @@ public class MainActivity extends BaseActivity {
 
      DataTextFragment dataRecommendFragment;
      DataTextFragment dataVideoFragment;
-     DataTextFragment dataExpandFragment;
+     AboutFragment aboutFragment;
      ProgramFragment programFragment;
 
      FragmentTransaction transaction;
@@ -142,9 +147,8 @@ public class MainActivity extends BaseActivity {
                               videoRadio.setChecked(true);
                               break;
                          case R.id.expandRadio:
-                              requestData = expandResourcesTxt;
-                              toolbar.setTitle(resourcesTxt);
-                              checkExpandFragment();
+                              toolbar.setTitle(aboutTxt);
+                              checkAboutFragment();
                               expandRadio.setChecked(true);
                               break;
                          default:
@@ -161,8 +165,8 @@ public class MainActivity extends BaseActivity {
           if (dataVideoFragment != null) {
                fragmentTransaction.hide(dataVideoFragment);
           }
-          if (dataExpandFragment != null) {
-               fragmentTransaction.hide(dataExpandFragment);
+          if (aboutFragment != null) {
+               fragmentTransaction.hide(aboutFragment);
           }
           if (programFragment != null) {
                fragmentTransaction.hide(programFragment);
@@ -180,7 +184,6 @@ public class MainActivity extends BaseActivity {
           }
           dataRecommendFragment.setArguments(bundle);
           transaction.commit();
-//          transaction.commitAllowingStateLoss();
      }
 
      private void checkVideoFragment() {
@@ -195,19 +198,6 @@ public class MainActivity extends BaseActivity {
           transaction.commit();
      }
 
-
-     private void checkExpandFragment() {
-          bundle.putString(TYPE, requestData);
-          if (dataExpandFragment == null) {
-               dataExpandFragment = new DataTextFragment();
-               transaction.add(R.id.container, dataExpandFragment);
-          } else {
-               transaction.show(dataExpandFragment);
-          }
-          dataExpandFragment.setArguments(bundle);
-          transaction.commit();
-     }
-
      public void checkProgramFragment() {
           if (programFragment == null) {
                programFragment = new ProgramFragment();
@@ -218,23 +208,33 @@ public class MainActivity extends BaseActivity {
           transaction.commit();
      }
 
-//     //TODO search功能
-//     @Override
-//     public boolean onCreateOptionsMenu(Menu menu) {
-//          getMenuInflater().inflate(R.menu.main_data_search_menu, menu);
-//          return true;
-//     }
-//
-//     /**
-//      * menu菜单点击操作的监听事件
-//      */
-//     @Override
-//     public boolean onOptionsItemSelected(MenuItem item) {
-//          switch (item.getItemId()) {
-//               case R.id.search:
-//
-//                    break;
-//          }
-//          return super.onOptionsItemSelected(item);
-//     }
+     private void checkAboutFragment() {
+          if (aboutFragment == null) {
+               aboutFragment = new AboutFragment();
+               transaction.add(R.id.container, aboutFragment);
+          } else {
+               transaction.show(aboutFragment);
+          }
+          transaction.commit();
+     }
+
+     //TODO search功能
+     @Override
+     public boolean onCreateOptionsMenu(Menu menu) {
+          getMenuInflater().inflate(R.menu.main_data_menu, menu);
+          return true;
+     }
+
+     /**
+      * menu菜单点击操作的监听事件
+      */
+     @Override
+     public boolean onOptionsItemSelected(MenuItem item) {
+          switch (item.getItemId()) {
+               case R.id.collection:
+                    startActivity(CollectionActivity.class);
+                    break;
+          }
+          return super.onOptionsItemSelected(item);
+     }
 }

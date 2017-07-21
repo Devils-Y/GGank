@@ -12,4 +12,5 @@
      <color name="iron">#D8D8D8</color>
      <color name="magnesium">#B2B2B2</color>
      <color name="hint_of_red">#F9F9F9</color>
+     <color name="half_white_trans">#80FFFFFF</color>
 </resources>

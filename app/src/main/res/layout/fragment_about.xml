@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:background="@color/hint_of_red"
+     android:orientation="vertical">
+
+     <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@color/white"
+          android:elevation="3dp"
+          android:padding="20dp"
+          android:translationZ="3dp">
+
+          <TextView
+               android:id="@+id/aboutAPP"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textSize="13sp"
+               android:text="@string/about_app_txt"/>
+
+          <LinearLayout
+               android:id="@+id/authorLayout"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/aboutAPP"
+               android:layout_marginTop="10dp"
+               android:orientation="horizontal">
+
+               <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@mipmap/author_icon"/>
+
+               <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="33dp"
+                    android:textSize="13sp"
+                    android:text="@string/author_txt"/>
+
+
+               <TextView
+                    android:id="@+id/version"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="33dp"
+                    android:textSize="13sp"/>
+
+          </LinearLayout>
+
+          <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/authorLayout"
+               android:layout_marginTop="10dp"
+               android:autoLink="web"
+               android:textSize="13sp"
+               android:text="@string/data_from_txt"/>
+
+     </RelativeLayout>
+
+
+     <android.support.v4.view.ViewPager
+          android:id="@+id/viewPager"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
+
+</LinearLayout>
