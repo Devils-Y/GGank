@@ -5,6 +5,10 @@
 
 ### 遗留功能: 搜索
 
+## 应用演示
+
+![](https://github.com/a876980961/GGank/blob/master/art/ggank.gif)
+
 ## 应用截图
 
 ![](https://github.com/a876980961/GGank/blob/master/art/screenshot01.png)
