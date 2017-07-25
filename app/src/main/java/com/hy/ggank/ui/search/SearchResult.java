@@ -1,13 +1,24 @@
-package com.hy.ggank.ui.data;
+package com.hy.ggank.ui.search;
+
+import java.util.List;
 
 /**
- * Created by huyin on 2017/7/5.
+ * Created by huyin on 2017/7/23.
  */
 
-public class DataResult {
+public class SearchResult {
 
+     private int count;
      private boolean error;
      private ResultsBean[] results;
+
+     public int getCount() {
+          return count;
+     }
+
+     public void setCount(int count) {
+          this.count = count;
+     }
 
      public boolean isError() {
           return error;
@@ -27,32 +38,13 @@ public class DataResult {
 
      public static class ResultsBean {
 
-          private String _id;
-          private String createdAt;
           private String desc;
+          private String ganhuo_id;
           private String publishedAt;
-          private String source;
+          private String readability;
           private String type;
           private String url;
-          private boolean used;
           private String who;
-          private String[] images;
-
-          public String get_id() {
-               return _id;
-          }
-
-          public void set_id(String _id) {
-               this._id = _id;
-          }
-
-          public String getCreatedAt() {
-               return createdAt;
-          }
-
-          public void setCreatedAt(String createdAt) {
-               this.createdAt = createdAt;
-          }
 
           public String getDesc() {
                return desc;
@@ -60,6 +52,14 @@ public class DataResult {
 
           public void setDesc(String desc) {
                this.desc = desc;
+          }
+
+          public String getGanhuo_id() {
+               return ganhuo_id;
+          }
+
+          public void setGanhuo_id(String ganhuo_id) {
+               this.ganhuo_id = ganhuo_id;
           }
 
           public String getPublishedAt() {
@@ -70,12 +70,12 @@ public class DataResult {
                this.publishedAt = publishedAt;
           }
 
-          public String getSource() {
-               return source;
+          public String getReadability() {
+               return readability;
           }
 
-          public void setSource(String source) {
-               this.source = source;
+          public void setReadability(String readability) {
+               this.readability = readability;
           }
 
           public String getType() {
@@ -94,28 +94,12 @@ public class DataResult {
                this.url = url;
           }
 
-          public boolean isUsed() {
-               return used;
-          }
-
-          public void setUsed(boolean used) {
-               this.used = used;
-          }
-
           public String getWho() {
                return who;
           }
 
           public void setWho(String who) {
                this.who = who;
-          }
-
-          public String[] getImages() {
-               return images;
-          }
-
-          public void setImages(String[] images) {
-               this.images = images;
           }
      }
 }

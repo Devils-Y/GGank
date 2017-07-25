@@ -47,28 +47,26 @@ public class DescContentActivity extends BaseSwipeActivity {
                case R.id.collection:
                     if (!isCollection) {
                          boolean isAdd = collectionManager.addCollection(
-                                   collectionModel.getCreatedAt(),
                                    collectionModel.getDesc(),
                                    collectionModel.getPublishedAt(),
-                                   collectionModel.getSource(),
                                    collectionModel.getType(),
                                    collectionModel.getWho(),
                                    collectionModel.getUrl(),
                                    collectionModel.getImage());
-                         if(isAdd){
+                         if (isAdd) {
                               ToastUtils.toast(getString(R.string.collection_success_txt));
                               isCollection = true;
                               collection.setImageResource(R.drawable.ic_star_white_24dp);
-                         }else{
+                         } else {
                               ToastUtils.toast(getString(R.string.collection_failed_txt));
                          }
                     } else {
                          boolean isDelete = collectionManager.delete(webUrl);
-                         if(isDelete){
+                         if (isDelete) {
                               ToastUtils.toast(getString(R.string.cancel_collection_success_txt));
                               isCollection = false;
                               collection.setImageResource(R.drawable.ic_star_border_white_24dp);
-                         }else{
+                         } else {
                               ToastUtils.toast(getString(R.string.cancel_collection_failed_txt));
                          }
                     }
@@ -116,7 +114,7 @@ public class DescContentActivity extends BaseSwipeActivity {
                     if (webView.canGoBack()) {
                          webView.goBack();
                     } else {
-                         if(webView!=null){
+                         if (webView != null) {
                               webView.removeAllViews();
                               webView.destroy();
                          }
@@ -155,13 +153,14 @@ public class DescContentActivity extends BaseSwipeActivity {
           webView.setWebChromeClient(new WebChromeClient() {
                @Override
                public void onProgressChanged(WebView view, int newProgress) {
-                    if (newProgress == 100) {
-                         progressBar.setVisibility(View.GONE);//加载完网页进度条消失
-                    } else {
-                         progressBar.setVisibility(View.VISIBLE);//开始加载网页时显示进度条
-                         progressBar.setProgress(newProgress);//设置进度值
+                    if (webView != null) {
+                         if (newProgress == 100) {
+                              progressBar.setVisibility(View.GONE);//加载完网页进度条消失
+                         } else {
+                              progressBar.setVisibility(View.VISIBLE);//开始加载网页时显示进度条
+                              progressBar.setProgress(newProgress);//设置进度值
+                         }
                     }
-
                }
           });
      }
@@ -177,15 +176,9 @@ public class DescContentActivity extends BaseSwipeActivity {
      }
 
      @Override
-     public void onPause() {
-          webView.reload();
-          super.onPause();
-     }
-
-     @Override
      protected void onDestroy() {
           super.onDestroy();
-          if(webView!=null){
+          if (webView != null) {
                webView.removeAllViews();
                webView.destroy();
           }
@@ -200,7 +193,7 @@ public class DescContentActivity extends BaseSwipeActivity {
           if (webView.canGoBack()) {
                webView.goBack();
           } else {
-               if(webView!=null){
+               if (webView != null) {
                     webView.removeAllViews();
                     webView.destroy();
                }

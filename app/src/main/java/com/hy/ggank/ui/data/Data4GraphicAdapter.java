@@ -48,7 +48,7 @@ public class Data4GraphicAdapter extends BaseAdapter<DataResult.ResultsBean> {
 
      @Override
      protected void convert(final BaseViewHolder holder, final DataResult.ResultsBean item, int position) {
-          String date = item.getCreatedAt().split("T")[0];//截取字符串
+          String date = item.getPublishedAt().split("T")[0];//截取字符串
           holder.setText(R.id.context, item.getDesc())
                     .setText(R.id.time, new StringBuffer()
                               .append(date)
@@ -56,7 +56,7 @@ public class Data4GraphicAdapter extends BaseAdapter<DataResult.ResultsBean> {
                               .append("by")
                               .append("\t\t")
                               .append(item.getWho() == null ? "Unknown" : item.getWho()));
-          /**(byte[] model)，load(T mode
+          /**
            * 判断是否显示image
            *
            * TODO 判断是否显示 gif 标签
@@ -91,8 +91,6 @@ public class Data4GraphicAdapter extends BaseAdapter<DataResult.ResultsBean> {
 
                     collectionModel = new CollectionModel();
                     collectionModel
-                              .setCreatedAt(item.getCreatedAt())
-                              .setSource(item.getSource())
                               .setPublishedAt(item.getPublishedAt())
                               .setType(item.getType())
                               .setUrl(item.getUrl())

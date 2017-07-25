@@ -3,6 +3,7 @@ package com.hy.ggank.ui.data;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.SimpleItemAnimator;
 import android.view.View;
@@ -11,8 +12,8 @@ import android.widget.AdapterView;
 
 
 import com.hy.ggank.R;
+import com.hy.ggank.base.BaseDividerItemDecoration;
 import com.hy.ggank.base.BaseFragment;
-import com.hy.ggank.base.LinearSpaceItemDecoration;
 import com.hy.ggank.widget.MyRecyclerView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -78,8 +79,8 @@ public class DataTextFragment extends BaseFragment implements DataView {
                     getActivity(), LinearLayoutManager.VERTICAL, false);
           recyclerView.setLayoutManager(linearLayoutManager);
           ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
-          recyclerView.addItemDecoration(new LinearSpaceItemDecoration(getActivity(),
-                    LinearSpaceItemDecoration.VERTICAL_LIST));
+          recyclerView.addItemDecoration(new BaseDividerItemDecoration(getActivity(),
+                    BaseDividerItemDecoration.VERTICAL));
           recyclerView.setAdapter(data4GraphicAdapter);
           recyclerView.setPullRefreshEnabled(true);
           recyclerView.setLoadingMoreEnabled(true);
@@ -127,8 +128,8 @@ public class DataTextFragment extends BaseFragment implements DataView {
      }
 
      @Override
-     public void onDestroy() {
-          super.onDestroy();
+     public void onDestroyView() {
+          super.onDestroyView();
           dataPresenter.onDestory();
           unbindDrawables(getContentView().findViewById(R.id.fragment));
      }

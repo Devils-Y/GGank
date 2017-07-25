@@ -1,9 +1,7 @@
 # GGank
-一款 简洁大方的干货Android客户端
+使用MVP + Retrofit2 + Okhttp3 + Rxandroid2.0 开发的一款 简洁大方的干货Android客户端
 
-## 当前版本 v1.0.1
-
-### 遗留功能: 搜索
+## 当前版本 v1.1.1
 
 ## 应用演示
 

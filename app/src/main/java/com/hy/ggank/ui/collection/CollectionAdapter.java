@@ -1,18 +1,24 @@
 package com.hy.ggank.ui.collection;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.hy.ggank.R;
 import com.hy.ggank.base.BaseAdapter;
 import com.hy.ggank.base.BaseViewHolder;
+import com.hy.ggank.db.CollectionManager;
 import com.hy.ggank.db.CollectionModel;
 import com.hy.ggank.ui.content.DescContentActivity;
 import com.hy.ggank.ui.content.ImageContentActivity;
 import com.hy.ggank.utils.ImageUtils;
+import com.hy.ggank.utils.ToastUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.hy.ggank.constants.Constants.IMAGE_OTHER;
@@ -33,8 +39,8 @@ public class CollectionAdapter extends BaseAdapter<CollectionModel> {
      }
 
      @Override
-     protected void convert(BaseViewHolder holder, final CollectionModel item, int position) {
-          String date = item.getCreatedAt().split("T")[0];//截取字符串
+     protected void convert(BaseViewHolder holder, final CollectionModel item, final int position) {
+          String date = item.getPublishedAt().split("T")[0];//截取字符串
           holder.setText(R.id.context, item.getDesc())
                     .setText(R.id.time, new StringBuffer()
                               .append(date)
@@ -42,7 +48,7 @@ public class CollectionAdapter extends BaseAdapter<CollectionModel> {
                               .append("by")
                               .append("\t\t")
                               .append(item.getWho() == null ? "Unknown" : item.getWho()));
-          /**(byte[] model)，load(T mode
+          /**
            * 判断是否显示image
            *
            * TODO 判断是否显示 gif 标签
@@ -77,8 +83,6 @@ public class CollectionAdapter extends BaseAdapter<CollectionModel> {
 
                     collectionModel = new CollectionModel();
                     collectionModel
-                              .setCreatedAt(item.getCreatedAt())
-                              .setSource(item.getSource())
                               .setPublishedAt(item.getPublishedAt())
                               .setType(item.getType())
                               .setUrl(item.getUrl())
@@ -90,6 +94,15 @@ public class CollectionAdapter extends BaseAdapter<CollectionModel> {
                     intent.putExtra(URL, item.getUrl());
                     intent.putExtra(TOOLTITLE, item.getDesc());
                     mContext.startActivity(intent);
+               }
+          });
+          holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+               @Override
+               public boolean onLongClick(final View view) {
+                    if (onButtonClick != null) {
+                         onButtonClick.onClick(view, item.getUrl(), position);
+                    }
+                    return true;
                }
           });
      }
@@ -106,14 +119,38 @@ public class CollectionAdapter extends BaseAdapter<CollectionModel> {
           }
      }
 
-     public int getDataSize(){
+     public int getDataSize() {
           return mData.size();
      }
 
-     public void add(List<CollectionModel> cList){
-          for(int i=0;i<cList.size();i++){
+     public void add(List<CollectionModel> cList) {
+          for (int i = 0; i < cList.size(); i++) {
                mData.add(cList.get(i));
           }
           notifyDataSetChanged();
+     }
+
+     /**
+      * 移除某项
+      *
+      * @param position
+      */
+     public void remove(int position){
+          mData.remove(position);
+          notifyDataSetChanged();
+     }
+
+     private OnButtonClick onButtonClick;
+
+     public OnButtonClick getOnButtonClick() {
+          return onButtonClick;
+     }
+
+     public void setOnButtonClick(OnButtonClick onButtonClick) {
+          this.onButtonClick = onButtonClick;
+     }
+
+     public interface OnButtonClick {
+          void onClick(View view, String url,int position);
      }
 }

@@ -33,23 +33,19 @@ public class CollectionManager {
      /**
       * 添加收藏
       *
-      * @param createdAt
       * @param desc
       * @param publishedAt
-      * @param source
       * @param type
       * @param who
       * @param url
       * @param image
       * @return
       */
-     public boolean addCollection(String createdAt, String desc, String publishedAt,
-                                  String source, String type, String who, String url, String image) {
+     public boolean addCollection(String desc, String publishedAt, String type,
+                                  String who, String url, String image) {
           ContentValues contentValues = new ContentValues();
-          contentValues.put("createdAt", createdAt);
           contentValues.put("desc", desc);
           contentValues.put("publishedAt", publishedAt);
-          contentValues.put("source", source);
           contentValues.put("type", type);
           contentValues.put("who", who);
           contentValues.put("url", url);
@@ -77,10 +73,8 @@ public class CollectionManager {
                while (cursor.moveToNext()) {
                     CollectionModel collection = new CollectionModel();
                     collection.setId(cursor.getInt(cursor.getColumnIndex("id")));
-                    collection.setCreatedAt(cursor.getString(cursor.getColumnIndex("createdAt")));
                     collection.setDesc(cursor.getString(cursor.getColumnIndex("desc")));
                     collection.setPublishedAt(cursor.getString(cursor.getColumnIndex("publishedAt")));
-                    collection.setSource(cursor.getString(cursor.getColumnIndex("source")));
                     collection.setType(cursor.getString(cursor.getColumnIndex("type")));
                     collection.setUrl(cursor.getString(cursor.getColumnIndex("url")));
                     collection.setWho(cursor.getString(cursor.getColumnIndex("who")));
@@ -109,10 +103,8 @@ public class CollectionManager {
                while (cursor.moveToNext()) {
                     CollectionModel collection = new CollectionModel();
                     collection.setId(cursor.getInt(cursor.getColumnIndex("id")));
-                    collection.setCreatedAt(cursor.getString(cursor.getColumnIndex("createdAt")));
                     collection.setDesc(cursor.getString(cursor.getColumnIndex("desc")));
                     collection.setPublishedAt(cursor.getString(cursor.getColumnIndex("publishedAt")));
-                    collection.setSource(cursor.getString(cursor.getColumnIndex("source")));
                     collection.setType(cursor.getString(cursor.getColumnIndex("type")));
                     collection.setUrl(cursor.getString(cursor.getColumnIndex("url")));
                     collection.setWho(cursor.getString(cursor.getColumnIndex("who")));
@@ -139,10 +131,8 @@ public class CollectionManager {
                while (cursor.moveToNext()) {
                     CollectionModel collection = new CollectionModel();
                     collection.setId(cursor.getInt(cursor.getColumnIndex("id")));
-                    collection.setCreatedAt(cursor.getString(cursor.getColumnIndex("createdAt")));
                     collection.setDesc(cursor.getString(cursor.getColumnIndex("desc")));
                     collection.setPublishedAt(cursor.getString(cursor.getColumnIndex("publishedAt")));
-                    collection.setSource(cursor.getString(cursor.getColumnIndex("source")));
                     collection.setType(cursor.getString(cursor.getColumnIndex("type")));
                     collection.setUrl(cursor.getString(cursor.getColumnIndex("url")));
                     collection.setWho(cursor.getString(cursor.getColumnIndex("who")));

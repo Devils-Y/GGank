@@ -23,11 +23,17 @@
      <string name="cancel_collection_success_txt">取消收藏!</string>
      <string name="cancel_collection_failed_txt">取消收藏失败!</string>
      <string name="about_txt">关于</string>
-     <string name="author_txt">作者: Pop</string>
+     <string name="author_txt">作者: huxiaozi</string>
      <string name="Github_txt">Github</string>
      <string name="about_app_txt">一款简洁大方的干货Android客户端</string>
      <string name="data_from_txt">数据均来自于http://gank.io/</string>
-     <string name="author_http_address">https://github.com/a876980961</string>
+     <string name="author_http_address">https://github.com/huxiaozi</string>
      <string name="api_http_address">http://gank.io/</string>
      <string name="now_version_txt">当前版本:</string>
+     <string name="alert_title_txt">提醒</string>
+     <string name="whether_to_delete_txt">是否确定要删除该项收藏？</string>
+     <string name="cancel_txt">取消</string>
+     <string name="sure_txt">确定</string>
+     <string name="delete_success_txt">删除成功!</string>
+     <string name="delete_error_txt">删除有误!</string>
 </resources>

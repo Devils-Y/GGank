@@ -3,6 +3,7 @@ package com.hy.ggank.network;
 
 
 import com.hy.ggank.ui.data.DataResult;
+import com.hy.ggank.ui.search.SearchResult;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
@@ -21,7 +22,7 @@ public class API {
      public static final String DataURL = "data/{type}/{count}/{page}";
 
      public interface DataService {
-          @GET(API.DataURL)
+          @GET(DataURL)
           Flowable<DataResult> getData(@Path("type") String type,
                                        @Path("count") String count,
                                        @Path("page") String page);
@@ -33,8 +34,20 @@ public class API {
      public static final String RandomDataURL = "random/data/{type}/{count}";
 
      public interface RandomDataService{
-          @GET(API.RandomDataURL)
+          @GET(RandomDataURL)
           Flowable<DataResult> getData(@Path("type") String type,
                                        @Path("count") String count);
+     }
+
+     /**
+      * 全站搜索
+      */
+     public static final String SearchURL = "search/query/{keyword}/category/all/count/{count}/page/{page}";
+
+     public interface SearchService{
+          @GET(SearchURL)
+          Flowable<SearchResult> getSearch(@Path("keyword") String keyword,
+                                           @Path("count") String count,
+                                           @Path("page") String page);
      }
 }

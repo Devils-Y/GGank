@@ -24,8 +24,7 @@ public class CollectionDBHelper extends SQLiteOpenHelper {
      @Override
      public void onCreate(SQLiteDatabase sqLiteDatabase) {
           String sql = "create table " + TABLE_NAME + "(id INTEGER primary key not null," +
-                    "createdAt text,desc text,publishedAt text,source text,type text," +
-                    "url text,who text,image text)";
+                    "desc text,publishedAt text,type text,url text,who text,image text)";
           sqLiteDatabase.execSQL(sql);
      }
 

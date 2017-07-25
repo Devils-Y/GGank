@@ -8,10 +8,8 @@ import java.io.Serializable;
 
 public class CollectionModel implements Serializable{
      private int id;
-     private String createdAt;
      private String desc;
      private String publishedAt;
-     private String source;
      private String type;
      private String url;
      private String who;
@@ -25,20 +23,12 @@ public class CollectionModel implements Serializable{
           this.id = id;
      }
 
-     public String getCreatedAt() {
-          return createdAt;
-     }
-
      public String getDesc() {
           return desc;
      }
 
      public String getPublishedAt() {
           return publishedAt;
-     }
-
-     public String getSource() {
-          return source;
      }
 
      public String getType() {
@@ -57,11 +47,6 @@ public class CollectionModel implements Serializable{
           return image;
      }
 
-     public CollectionModel setCreatedAt(String createdAt) {
-          this.createdAt = createdAt;
-          return this;
-     }
-
      public CollectionModel setDesc(String desc) {
           this.desc = desc;
           return this;
@@ -69,11 +54,6 @@ public class CollectionModel implements Serializable{
 
      public CollectionModel setPublishedAt(String publishedAt) {
           this.publishedAt = publishedAt;
-          return this;
-     }
-
-     public CollectionModel setSource(String source) {
-          this.source = source;
           return this;
      }
 

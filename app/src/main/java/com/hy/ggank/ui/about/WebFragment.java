@@ -1,9 +1,7 @@
 package com.hy.ggank.ui.about;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -64,27 +62,24 @@ public class WebFragment extends BaseFragment {
                @Override
                public void onProgressChanged(WebView view, int newProgress) {
                     super.onProgressChanged(view, newProgress);
-                    if (newProgress == 100) {
-                         progressBar.setVisibility(View.GONE);
-                    } else {
-                         progressBar.setVisibility(View.VISIBLE);
+                    if (webView != null) {
+                         if (newProgress == 100) {
+                              progressBar.setVisibility(View.GONE);
+                         } else {
+                              progressBar.setVisibility(View.VISIBLE);
+                         }
                     }
                }
           });
      }
 
      @Override
-     public void onPause() {
-          webView.reload();
-          super.onPause();
-     }
-
-     @Override
      public void onDestroyView() {
           super.onDestroyView();
-          if(webView!=null){
+          if (webView != null) {
                webView.removeAllViews();
                webView.destroy();
+               progressBar = null;
           }
      }
 }

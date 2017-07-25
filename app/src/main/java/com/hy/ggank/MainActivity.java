@@ -17,6 +17,7 @@ import com.hy.ggank.base.BaseActivity;
 import com.hy.ggank.ui.collection.CollectionActivity;
 import com.hy.ggank.ui.data.DataTextFragment;
 import com.hy.ggank.ui.program.ProgramFragment;
+import com.hy.ggank.ui.search.SearchActivity;
 import com.hy.ggank.utils.ToastUtils;
 import com.hy.ggank.ui.welfare.WelfareDialogFragment;
 
@@ -233,6 +234,9 @@ public class MainActivity extends BaseActivity {
           switch (item.getItemId()) {
                case R.id.collection:
                     startActivity(CollectionActivity.class);
+                    break;
+               case R.id.search:
+                    startActivity(SearchActivity.class);
                     break;
           }
           return super.onOptionsItemSelected(item);

@@ -6,10 +6,15 @@
      android:background="@color/white"
      android:orientation="vertical">
 
-     <include
-          layout="@layout/toolbar_layout"
+     <android.support.design.widget.AppBarLayout
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"/>
+          android:layout_height="wrap_content">
+
+          <include
+               layout="@layout/toolbar_layout"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+     </android.support.design.widget.AppBarLayout>
 
      <FrameLayout
           android:id="@+id/frameLayout"
